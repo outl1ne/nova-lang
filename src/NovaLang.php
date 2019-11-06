@@ -15,6 +15,7 @@ class NovaLang extends Tool
     public function boot()
     {
         Nova::script('nova-lang', __DIR__ . '/../dist/js/tool.js');
+        Nova::script('nova-locale-field-form', __DIR__ . '/../dist/js/nova-locale-field-form.js');
     }
 
     /**
