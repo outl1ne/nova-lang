@@ -10,7 +10,7 @@ class LocaleFieldForm extends Field
     public $component = 'locale-field';
     protected $localeParentIdAttribute;
 
-    public function __construct($name, $localeAttribute, $localeParentIdAttribute, $resolveCallback = null)
+    public function __construct($name, $localeAttribute, $localeParentIdAttribute = '', $resolveCallback = null)
     {
         parent::__construct($name, $localeAttribute, $resolveCallback);
         $this->localeParentIdAttribute = $localeParentIdAttribute;
