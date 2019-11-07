@@ -8,12 +8,15 @@ export default {
 
   data: {
     localeParentId: void 0,
+    previouslySetLocale: void 0,
     locale: void 0,
   },
   methods: {
     setInitialValue() {
       this.localeParentId = getParameterByName('localeParentId');
-      this.locale = this.field.locale;
+      this.previouslySetLocale = this.field.previouslySetLocale;
+      this.locale = this.previouslySetLocale ? this.previouslySetLocale : this.field.locale;
+      this.$store.commit('setLocale', this.locale);
     },
 
     fill(formData) {
