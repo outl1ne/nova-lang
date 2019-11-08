@@ -56,9 +56,7 @@ $locales = nova_lang_get_all_locales();
 
 //or you can use it in another package.
 
-'locales' => (function() {
-    return nova_lang_get_all_locales();
-}),
+'locales' => nova_lang_get_all_locales(),
 ```
 
 ## Usage
