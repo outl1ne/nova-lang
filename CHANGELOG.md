@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - READ.me and CHANGELOG.md files
 - Added watch method to Navigation.vue to read locale parameter in query
+- New Nova.Store module
 
 ### Changed
 
@@ -27,5 +28,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Now uses vuex storage to keep and update active locale in vue components.
 
-[1.0.1]: https://github.com/optimistdigital/nova-sortable/compare/1.0.0...1.0.1
-[1.0.0]: https://github.com/optimistdigital/nova-sortable/releases/tag/1.0.0
+[1.0.0]: https://github.com/optimistdigital/nova-lang/releases/tag/1.0
