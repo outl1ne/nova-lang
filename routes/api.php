@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/novaLangUpdateActiveLocale/{selectedLocale}', 'OptimistDigital\NovaLang\Http\Controllers\LocaleController@update');
 Route::get('/novaLangGetActiveLocale', 'OptimistDigital\NovaLang\Http\Controllers\LocaleController@show');
+Route::get('/novaLangGetAllLocales', '\OptimistDigital\NovaLang\Http\Controllers\LocaleController@index');

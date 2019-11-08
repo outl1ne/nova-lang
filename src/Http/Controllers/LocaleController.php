@@ -9,11 +9,16 @@ class LocaleController extends Controller
 
     public function update($activeLocale)
     {
-        request()->session()->put('nova_lang_active_locale', $activeLocale);
+        nova_lang_set_active_locale($activeLocale);
     }
 
     public function show()
     {
-        return request()->session()->get('nova_lang_active_locale', key(config('nova-lang.locales')));
+        return nova_lang_get_active_locale();
+    }
+
+    public function index()
+    {
+        return nova_lang_get_all_locales();
     }
 }
