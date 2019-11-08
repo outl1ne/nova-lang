@@ -55,8 +55,9 @@ export default {
       Nova.request()
         .post(`/nova-vendor/nova-lang/novaLangUpdateActiveLocale/${selectedLocale}`)
         .then(
-          response => {
+          () => {
             this.$store.commit('setLocale', selectedLocale);
+            this.isActive = false;
           },
           () => {
             this.$toasted.show('Failed to update selected locale!', { type: 'error' });
