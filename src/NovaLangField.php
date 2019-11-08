@@ -1,14 +1,13 @@
 <?php
 
-namespace OptimistDigital\NovaLang\LocaleFieldForm;
+namespace OptimistDigital\NovaLang\NovaLangField;
 
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Nova;
 
-class LocaleFieldForm extends Field
+class NovaLangField extends Field
 {
-    public $component = 'locale-field';
+    public $component = 'nova-lang-field';
     protected $localeParentIdAttribute;
     protected $localeAttribute;
 
