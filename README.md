@@ -1,27 +1,20 @@
 # Nova Lang
 
-This [Laravel Nova](https://nova.laravel.com) package allows you to get and set localization of content.
+[Laravel Nova](https://nova.laravel.com) package that allows you to set localization of content.
+
+![NovaLang](./docs/novalang.gif)
 
 ## Installation
 
-Install the package in a Laravel Nova project via Composer:
+Install the package in a Laravel Nova project via Composer and run migrations:
 
-```json
- "repositories": [
-    {
-      "type": "path",
-      "url": "./nova-components/nova-lang"
-    }
-  ],
-```
-```json
-  "require": {
-    "optimistdigital/nova-lang": "*"
-  },
-```
-```
-#Update/Install composer
-composer install
+## Installation
+
+Install the package in a Laravel Nova project via Composer and run migrations:
+
+```bash
+# Install package
+composer require optimistdigital/nova-lang
 ```
 
 Publish the `nova-lang` configuration file and edit it to your preference:
@@ -44,18 +37,7 @@ public function tools()
 }
 ```
 
-
-## Usage 
-
-Call out helper function, where you wish to get active locale
-```php
- $activeLocale = nova_lang_get_active_locale()
-
- //returns active locale key 
-```
-
-### Defining locales
-
+## Defining locales
 
 ```php
 // in /config/nova-lang.php
@@ -63,8 +45,46 @@ Call out helper function, where you wish to get active locale
 // ...
 'locales' => [
   'en' => 'English',
-  'et' => 'Estonian',
+   'et' => 'Estonian',
 ],
+```
+
+After defining locales in /config/nova-lang.php, you can use helper function.
+
+```php
+$locales = nova_lang_get_all_locales();
+
+//or you can use it in another package.
+
+'locales' => (function() {
+    return nova_lang_get_all_locales();
+}),
+```
+
+## Usage
+
+### Creating the field
+
+```php
+$fields[] = NovaLangField::make('Locale', 'locale');
+```
+
+If you are using a translation package like nova-locale-field, you can also give
+locale_parent_id. localeParentId has to be optainable through url query. Make sure you have defined locale_parent_id in your database.
+
+```php
+$fields[] = LocaleFieldForm::make('Locale, 'locale', 'locale_parent_id')
+```
+
+### Sort resources by locale
+
+```php
+//Your resource file, where you have returned $fields array
+public static function indexQuery(NovaRequest $request, $query)
+{
+    $query->where('your_table_name.locale', nova_lang_get_active_locale());
+    return $query;
+}
 ```
 
 ## Credits
