@@ -8,10 +8,6 @@
 
 Install the package in a Laravel Nova project via Composer and run migrations:
 
-## Installation
-
-Install the package in a Laravel Nova project via Composer and run migrations:
-
 ```bash
 # Install package
 composer require optimistdigital/nova-lang
