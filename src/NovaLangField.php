@@ -29,6 +29,7 @@ class NovaLangField extends Field
         $localeAttribute = $this->localeAttribute;
 
         $this->withMeta([
+            'allLocales' => array_keys(nova_lang_get_all_locales()),
             'previouslySetLocale' => $previouslySetLocale,
             'locale' =>  nova_lang_get_active_locale(),
             'localeParentIdAttribute' => $localeParentIdAttribute,
