@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div v-if="showLocales"
     class="cursor-pointer items-center font-normal text-white mb-6 text-base no-underline navigation-dropdown-nova-lang"
     v-bind:class="{ active: isActive }"
   >
@@ -40,8 +40,10 @@ import { mapGetters } from 'vuex';
 export default {
   props: ['locales'],
   name: 'Navigation',
+
   data: function() {
     return {
+      showLocales: Object.keys(this.locales).length > 1 || (window.location.href.indexOf("edit") > -1 && this.locales[this.activeLocale] === void 0),
       activeLocale: void 0,
       localeParent: void 0,
       isActive: false,
@@ -50,8 +52,11 @@ export default {
   },
   methods: {
     toggleClass() {
-      if (Object.keys(this.locales).length > 1 || window.location.href.indexOf("edit") > -1)
+      if (this.showLocales)
       this.isActive = !this.isActive;
+    },
+    shouldShowLocales() {
+      this.showLocales = Object.keys(this.locales).length > 1 || (window.location.href.indexOf("edit") > -1 && this.locales[this.activeLocale] === void 0);
     },
     setActiveLocale(selectedLocale) {
       Nova.request()
@@ -107,6 +112,7 @@ export default {
     getLocale(newLocale) {
       this.activeLocale = newLocale;
       this.updateActiveLocaleFromStore(newLocale);
+      this.shouldShowLocales();
       this.reloadResources();
     },
     $route: async function($route) {
