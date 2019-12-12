@@ -1,6 +1,6 @@
 <script>
 import { FormField, HandlesValidationErrors } from 'laravel-nova';
-import { getParameterByName } from '../../../../nova-page-manager/resources/js/util';
+import { getParameterByName } from '../../js/util';
 import { mapGetters } from 'vuex';
 
 export default {

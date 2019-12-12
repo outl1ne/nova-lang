@@ -18,7 +18,7 @@
         />
       </svg>
       <span class="sidebar-label dim items-center" v-if="locales[activeLocale]"> {{ locales[activeLocale] }} </span>
-      <span class="sidebar-label dim items-center" v-else>Undefined</span>
+      <span class="sidebar-label dim items-center" v-else>{{activeLocale}}</span>
     </h3>
     <div>
       <ul class="list-reset mb-8">
@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     toggleClass() {
+      if (Object.keys(this.locales).length > 1 || window.location.href.indexOf("edit") > -1)
       this.isActive = !this.isActive;
     },
     setActiveLocale(selectedLocale) {
@@ -112,9 +113,13 @@ export default {
       if (this.activeLocale === void 0) {
         this.activeLocale = (await this.getActiveLocale()).data;
       }
+
+      const getAllLocales = (await this.getAllLocales()).data;
+      const localeKeys = Object.keys(getAllLocales);
+
+      if (!localeKeys.includes(this.activeLocale)) await this.setActiveLocale(localeKeys[0]);
+
       if ($route.query.locale !== void 0 && this.activeLocale !== $route.query.locale) {
-        const getAllLocales = (await this.getAllLocales()).data;
-        const localeKeys = Object.keys(getAllLocales);
         if (localeKeys.includes($route.query.locale)) this.setActiveLocale($route.query.locale);
         else {
           this.$toasted.show('Locale is not defined in config file', { type: 'error' });
