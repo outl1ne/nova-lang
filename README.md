@@ -41,7 +41,7 @@ public function tools()
 // ...
 'locales' => [
   'en' => 'English',
-   'et' => 'Estonian',
+  'et' => 'Estonian',
 ],
 ```
 
@@ -67,7 +67,7 @@ If you are using a translation package like nova-locale-field, you can also give
 locale_parent_id. localeParentId has to be optainable through url query. Make sure you have defined locale_parent_id in your database.
 
 ```php
-$fields[] = LocaleFieldForm::make('Locale, 'locale', 'locale_parent_id')
+$fields[] = NovaLangField::make('Locale', 'locale', 'locale_parent_id')
 ```
 
 ### Sort resources by locale
