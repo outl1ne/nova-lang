@@ -76,7 +76,11 @@ $fields[] = NovaLangField::make('Locale', 'locale', 'locale_parent_id')
 //Your resource file, where you have returned $fields array
 public static function indexQuery(NovaRequest $request, $query)
 {
-    $query->where('your_table_name.locale', nova_lang_get_active_locale());
+    $localeColumn = 'your_table_name' . 'locale'
+    $query->where(function ($subQuery) use ($localeColumn) {
+        $subQuery->where($localeColumn, nova_lang_get_active_locale())
+            ->orWhereNotIn($localeColumn, array_keys(nova_lang_get_all_locales()));
+    });
     return $query;
 }
 ```
