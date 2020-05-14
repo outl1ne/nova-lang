@@ -44,10 +44,10 @@ public function tools()
   'et' => 'Estonian',
 ],
 
-// Or if you are using optimistdigital/nova-locale-manager package
+// OR
 
-'locales' => function() {
-  return nova_get_locales();
+'locales' => function () {
+  return Locale::all()->pluck('name', 'key');
 },
 
 ```
