@@ -20,7 +20,10 @@ if (!function_exists('nova_lang_get_active_locale')) {
 if (!function_exists('nova_lang_get_all_locales')) {
     function nova_lang_get_all_locales()
     {
-        return config('nova-lang.locales');
+        $locales = config('nova-lang.locales', ['en' => 'English']);
+        if (is_callable($locales)) return call_user_func($locales);
+        if (is_array($locales)) return $locales;
+        return ['en' => 'English'];
     }
 }
 
