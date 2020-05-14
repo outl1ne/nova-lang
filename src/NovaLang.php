@@ -25,9 +25,8 @@ class NovaLang extends Tool
      */
     public function renderNavigation()
     {
-        if (!config('nova-lang.locales')) throw new \Error('Assign Locales');
         return view('nova-lang::navigation', [
-            'locales' => config('nova-lang.locales'),
+            'locales' => nova_lang_get_all_locales(),
         ]);
     }
 }
