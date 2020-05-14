@@ -43,6 +43,13 @@ public function tools()
   'en' => 'English',
   'et' => 'Estonian',
 ],
+
+// Or if you are using optimistdigital/nova-locale-manager package
+
+'locales' => function() {
+  return nova_get_locales();
+},
+
 ```
 
 After defining locales in /config/nova-lang.php, you can use helper function.
