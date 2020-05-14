@@ -43,6 +43,13 @@ public function tools()
   'en' => 'English',
   'et' => 'Estonian',
 ],
+
+// OR
+
+'locales' => function () {
+  return Locale::all()->pluck('name', 'key');
+},
+
 ```
 
 After defining locales in /config/nova-lang.php, you can use helper function.
