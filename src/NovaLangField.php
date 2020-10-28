@@ -1,6 +1,6 @@
 <?php
 
-namespace OptimistDigital\NovaLang\NovaLangField;
+namespace OptimistDigital\NovaLang;
 
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -16,7 +16,6 @@ class NovaLangField extends Field
         parent::__construct($name, $localeAttribute, $resolveCallback);
         $this->localeParentIdAttribute = $localeParentIdAttribute;
         $this->localeAttribute = $localeAttribute;
-
     }
 
 
